@@ -13,7 +13,7 @@ class NegocioController extends Controller
      */
     public function index()
     {
-        $datos = Negocio::all();
+        $datos = Negocio::with('subcategoria','administrado')->get();
         return response()->json($datos);
     }
 
