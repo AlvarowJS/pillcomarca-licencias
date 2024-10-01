@@ -117,6 +117,23 @@ class AuthController extends Controller
         }
     }
 
+    public function register(Request $request){
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role_id' => 1,
+            'status' => 1
+        ]);
+        return response()->json([
+            'message' => 'Usuario creado exitosamente.',
+            'user' => $user,
+        ], 201);
+    }
+
+
+
     public function authToken(Request $request)
     {
     $user = Auth::user();

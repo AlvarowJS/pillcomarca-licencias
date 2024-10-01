@@ -1,31 +1,33 @@
 models:
-  Negocio: 
-    nombrenegocio: string
-    ruc: string
-    direccion: string
-    metroscuadrados: string
-    monto: string
-    nLicencia: string
-    nExpediente: string
-    fecha: date
-    subcategoria_id: id
-    administrado_id: id
-  Administrado:
-    nombreadministrado: string
-    apellidoadministrado: string
-    numero: string
-    dni: string
-    ruc: string
-    gmail: string
-    relationships:
-      hasMany: Negocio
-  SubCategoria:
-    rubro: string
-    categoria_id: id
-    relationships:
-      hasMany: Negocio
-  Categoria: 
-    nombrecategoria: string
-    relationships:
-      hasMany: SubCategoria
+  # Negocio: 
+  #   nombrenegocio: string
+  #   ruc: string
+  #   direccion: string
+  #   metroscuadrados: string
+  #   monto: string
+  #   nLicencia: string
+  #   nExpediente: string
+  #   fecha: date
+  #   subcategoria_id: id
+  #   administrado_id: id
+  # Administrado:
+  #   nombreadministrado: string
+  #   apellidoadministrado: string
+  #   numero: string
+  #   dni: string
+  #   ruc: string
+  #   gmail: string
+  #   relationships:
+  #     hasMany: Negocio
+  # SubCategoria:
+  #   rubro: string
+  #   categoria_id: id
+  #   relationships:
+  #     hasMany: Negocio
+  # Categoria: 
+  #   nombrecategoria: string
+  #   relationships:
+  #     hasMany: SubCategoria
+  ActividadEconomica:
+      nombre: string
  

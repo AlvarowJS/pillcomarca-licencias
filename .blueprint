@@ -1,18 +1,10 @@
 created:
-    - database/factories/NegocioFactory.php
-    - database/factories/AdministradoFactory.php
-    - database/factories/SubCategoriaFactory.php
-    - database/factories/CategoriaFactory.php
-    - database/migrations/2024_08_01_155848_create_negocios_table.php
-    - database/migrations/2024_08_01_155849_create_administrados_table.php
-    - database/migrations/2024_08_01_155850_create_sub_categorias_table.php
-    - database/migrations/2024_08_01_155851_create_categorias_table.php
-    - app/Models/Negocio.php
-    - app/Models/Administrado.php
-    - app/Models/SubCategoria.php
-    - app/Models/Categoria.php
+    - database/factories/ActividadEconomicaFactory.php
+    - database/migrations/2024_09_04_172939_create_actividad_economicas_table.php
+    - app/Models/ActividadEconomica.php
 models:
     Negocio: { nombrenegocio: string, ruc: string, direccion: string, metroscuadrados: string, monto: string, nLicencia: string, nExpediente: string, fecha: date, subcategoria_id: id, administrado_id: id }
     Administrado: { nombreadministrado: string, apellidoadministrado: string, numero: string, dni: string, ruc: string, gmail: string, relationships: { hasMany: Negocio } }
     SubCategoria: { rubro: string, categoria_id: id, relationships: { hasMany: Negocio } }
     Categoria: { nombrecategoria: string, relationships: { hasMany: SubCategoria } }
+    ActividadEconomica: { nombre: string }
