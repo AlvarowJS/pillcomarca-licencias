@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Models\SubCategoria;
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
+use Symfony\Component\HttpFoundation\Response;
+
 
 class SubCategoriaController extends Controller
 {
@@ -13,7 +16,7 @@ class SubCategoriaController extends Controller
      */
     public function index()
     {
-        $datos = Subcategoria::all();
+        $datos = Subcategoria::with('categoria')->get();
         return response()->json($datos);
     }
 
@@ -67,7 +70,17 @@ class SubCategoriaController extends Controller
         if(!$datos){
             return response()->json(['message'=>'SubCategoria no encontrada'],404);
         }
-        $datos->delete();
-        return response()->json(['message'=>'Subcategoria eliminada']);
+        
+        try {
+            $datos ->delete();
+            return response()->json(['messge'=>'SubCategoria Eliminada']);
+         }   catch (QueryException $e) {
+                if ($e->getCode() == '23000') {
+                    return response()->json(['error' => 'Conflict: Cannot delete due to foreign key constraint.'], Response::HTTP_CONFLICT);
+                }
+                // Manejo de otros errores
+                return response()->json([
+                    'error' => 'An unexpected error occurred.'], Response::HTTP_INTERNAL_SERVER_ERROR);
+            }
     }
 }

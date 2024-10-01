@@ -24,8 +24,13 @@ class Negocio extends Model
         'nLicencia',
         'nExpediente',
         'fecha',
+        'lugar',
+        'manzana',
+        'lote',
+        'razonsocial',
         'subcategoria_id',
         'administrado_id',
+        'actividad_economica_id',
     ];
 
     /**
@@ -35,9 +40,7 @@ class Negocio extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'fecha' => 'date',
-        'subcategoria_id' => 'integer',
-        'administrado_id' => 'integer',
+     
     ];
 
     public function subcategoria(): BelongsTo
@@ -48,5 +51,10 @@ class Negocio extends Model
     public function administrado(): BelongsTo
     {
         return $this->belongsTo(Administrado::class);
+    }
+
+    public function actividad_economica(): BelongsTo
+    {
+        return $this->belongsTo(ActividadEconomica::class);
     }
 }

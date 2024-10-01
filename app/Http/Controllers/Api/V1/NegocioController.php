@@ -2,18 +2,26 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Exports\NegociosExport;
 use App\Http\Controllers\Controller;
+use App\Models\ActividadEconomica;
 use App\Models\Negocio;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class NegocioController extends Controller
 {
+
+    public function indexActividad(){
+        $datos = ActividadEconomica::all();
+        return response()->json($datos);
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $datos = Negocio::all();
+        $datos = Negocio::with('subcategoria','administrado','actividad_economica')->get();
         return response()->json($datos);
     }
 
@@ -30,9 +38,14 @@ class NegocioController extends Controller
         $negocio->monto=$request->monto;
         $negocio->nLicencia = $request->nLicencia;
         $negocio->nExpediente = $request->nExpediente;
+        $negocio->lugar = $request->lugar;
+        $negocio->manzana = $request->manzana;
+        $negocio->lote = $request->lote;
         $negocio->fecha = $request->fecha;
+        $negocio->razonsocial = $request->razonsocial;
         $negocio->subcategoria_id = $request->subcategoria_id;
         $negocio->administrado_id = $request->administrado_id;
+        $negocio->actividad_economica_id = $request->actividad_economica_id;
         $negocio->save();
 
         return response()->json(['message'=>'El negocio fue correctamente gusrdado','data'=>$negocio],201);
@@ -67,8 +80,13 @@ class NegocioController extends Controller
         $negocio->nLicencia = $request->nLicencia;
         $negocio->nExpediente = $request->nExpediente;
         $negocio->fecha = $request->fecha;
+        $negocio->lugar = $request->lugar;
+        $negocio->manzana = $request->manzana;
+        $negocio->lote = $request->lote;
+        $negocio->razonsocial = $request->razonsocial;
         $negocio->subcategoria_id = $request->subcategoria_id;
         $negocio->administrado_id = $request->administrado_id;
+        $negocio->actividad_economica_id = $request->actividad_economica_id;
         $negocio->save();
 
         return response()->json($negocio);
@@ -86,4 +104,16 @@ class NegocioController extends Controller
         $datos->delete();
         return response()->json(['message'=>'Negocio Eliminado']);
     }
+
+    public function exportar($id)
+    {
+        $negocio = Negocio::with('subcategoria', 'administrado', 'actividad_economica')->find($id);
+
+        if (!$negocio) {
+        return response()->json(['message' => 'Negocio no encontrado'], 404);
+        }
+
+    return Excel::download(new NegociosExport($negocio), 'certificado.xlsx');
+    }
+
 }

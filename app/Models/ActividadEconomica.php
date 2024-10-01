@@ -4,10 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class SubCategoria extends Model
+class ActividadEconomica extends Model
 {
     use HasFactory;
 
@@ -17,8 +16,7 @@ class SubCategoria extends Model
      * @var array
      */
     protected $fillable = [
-        'rubro',
-        'categoria_id',
+        'nombre',
     ];
 
     /**
@@ -30,13 +28,9 @@ class SubCategoria extends Model
         'id' => 'integer',
     ];
 
-    public function negocios(): HasMany
+    public function negocio()
     {
         return $this->hasMany(Negocio::class);
     }
 
-    public function categoria(): BelongsTo
-    {
-        return $this->belongsTo(Categoria::class);
-    }
 }

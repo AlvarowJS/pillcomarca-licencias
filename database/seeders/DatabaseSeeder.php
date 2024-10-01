@@ -18,5 +18,32 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        \App\Models\ActividadEconomica::factory()->create([
+            'nombre' => 'Comercio',
+        ]);
+
+        \App\Models\ActividadEconomica::factory()->create([
+            'nombre' => 'Servicio',
+
+        ]);
+
+        \App\Models\Role::factory()->create([
+            'role_number' => 1,
+            'name' => 'Administrador',
+            
+        ]);
+        \App\Models\Role::factory()->create([
+            'role_number' => 2,
+            'name' => 'Usuario',
+            
+        ]);
+        \App\Models\User::factory()->create([
+            'name' => 'Bryan',
+            'email' => 'bryan@gmail.com',
+            'password' => '87654321',
+            'role_id' =>1,
+            'status' =>1,
+        ]);
     }
 }
