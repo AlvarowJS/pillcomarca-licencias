@@ -28,6 +28,8 @@ class Negocio extends Model
         'manzana',
         'lote',
         'razonsocial',
+        'imagen',
+        'redsocial',
         'subcategoria_id',
         'administrado_id',
         'actividad_economica_id',

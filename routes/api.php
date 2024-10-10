@@ -44,3 +44,6 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::post('/v1/login1', [Usuario::class, 'login']); // El login no necesita estar protegido por auth:sanctum
 
 Route::get('/v1/exportar-excel/{id}', [Negocio::class,'exportar']);
+Route::get('/v1/buscar-negocio', [Negocio::class,'buscar']); 
+
+Route::get('/v1/ver-subcategorias',[SubCategoria::class,'index']);
