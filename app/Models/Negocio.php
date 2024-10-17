@@ -30,6 +30,7 @@ class Negocio extends Model
         'razonsocial',
         'imagen',
         'redsocial',
+        'publico',
         'subcategoria_id',
         'administrado_id',
         'actividad_economica_id',

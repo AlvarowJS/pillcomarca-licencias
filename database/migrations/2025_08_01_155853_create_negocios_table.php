@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('razonsocial');
             $table->text('imagen')->nullable();
             $table->text('redsocial')->nullable();
+            $table->boolean('publico')->nullable();
             $table->foreignId('subcategoria_id')->nullable()->constrained('sub_categorias');
             $table->foreignId('administrado_id')->nullable()->constrained('administrados');
             $table->foreignId('actividad_economica_id')->nullable()->constrained('actividad_economicas');
