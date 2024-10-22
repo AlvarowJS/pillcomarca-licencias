@@ -43,6 +43,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'bryan@gmail.com',
             'password' => '87654321',
             'role_id' =>1,
+            'numero' => '987654321',
+            'dni' => '87654321',
             'status' =>1,
         ]);
     }

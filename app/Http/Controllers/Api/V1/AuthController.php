@@ -77,6 +77,8 @@ class AuthController extends Controller
         $user->role_id=$request->role_id;
         $user->status = $request->status;
         $user->password =Hash::make($request->password);
+        $user->numero = $request->numero;
+        $user->dni = $request->dni;
         $user->save();
 
         return response()->json($user);
