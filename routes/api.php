@@ -47,3 +47,5 @@ Route::get('/v1/exportar-excel/{id}', [Negocio::class,'exportar']);
 Route::get('/v1/buscar-negocio', [Negocio::class,'buscar']); 
 
 Route::get('/v1/ver-subcategorias',[SubCategoria::class,'index']);
+
+Route::post('/v1/register',[Usuario::class, 'register']);
