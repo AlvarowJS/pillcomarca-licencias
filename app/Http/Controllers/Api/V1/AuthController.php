@@ -34,6 +34,8 @@ class AuthController extends Controller
             'name'=>'required|string|max:255',
             'email'=>'required|string|email|max:255|unique:users',
             'password'=>'required|string|min:8', 
+            'dni'=>'required|string|max:8',
+            'numero'=>'required|string|min:9|max:9',
             
         ]);
 
@@ -41,6 +43,8 @@ class AuthController extends Controller
             'name'=>$validaData['name'],
             'email'=>$validaData['email'],
             'password'=>Hash::make($validaData['password']),
+            'numero' =>$validaData['numero'],
+            'dni'=>$validaData['dni'],
             'role_id'=>$request->role_id,
             'status'=>true
         ]);
