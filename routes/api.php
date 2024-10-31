@@ -30,6 +30,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('/v1/administrado', Administrado::class);
     Route::apiResource('/v1/categoria', Categoria::class);
     Route::apiResource('/v1/negocio', Negocio::class);
+    Route::post('/v1/negocio-update', [Negocio::class,'updateFoto']); 
     Route::apiResource('/v1/subCategoria', SubCategoria::class);
     Route::apiResource('/v1/usuario', Usuario::class);
     
@@ -45,6 +46,7 @@ Route::post('/v1/login1', [Usuario::class, 'login']); // El login no necesita es
 
 Route::get('/v1/exportar-excel/{id}', [Negocio::class,'exportar']);
 Route::get('/v1/buscar-negocio', [Negocio::class,'buscar']); 
+Route::get('/v1/buscar-negocio/{id}', [Negocio::class,'buscaId']); 
 
 Route::get('/v1/ver-subcategorias',[SubCategoria::class,'index']);
 
