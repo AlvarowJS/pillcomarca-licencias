@@ -74,7 +74,7 @@ class NegocioController extends Controller
         $negocio->fecha = $request->fecha;
         $negocio->razonsocial = $request->razonsocial;
         $negocio->redsocial = $request->redsocial;
-        $negocio->publico = $request->publico ? 1 : 0;
+        $negocio->publico = $request->publico ? 0 : 1;
         $negocio->subcategoria_id = $request->subcategoria_id;
         $negocio->administrado_id = $request->administrado_id;
         $negocio->actividad_economica_id = $request->actividad_economica_id;
@@ -132,7 +132,7 @@ class NegocioController extends Controller
         $negocio->lote = $request->lote;
         $negocio->razonsocial = $request->razonsocial;
         $negocio->redsocial = $request->redsocial;
-        $negocio->publico = $request->publico ? 1 : 0;
+        $negocio->publico = $request->publico ? 0 : 1;
         $negocio->subcategoria_id = $request->subcategoria_id;
         $negocio->administrado_id = $request->administrado_id;
         $negocio->actividad_economica_id = $request->actividad_economica_id;
