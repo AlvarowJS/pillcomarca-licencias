@@ -131,7 +131,7 @@ class NegocioController extends Controller
         $negocio->manzana = $request->manzana;
         $negocio->lote = $request->lote;
         $negocio->razonsocial = $request->razonsocial;
-        $negocio->redsocial = $request->redsocial;
+        $negocio->redsocial = $request->redsocial? null : '';
         $negocio->publico = $request->publico ? 0 : 1;
         $negocio->subcategoria_id = $request->subcategoria_id;
         $negocio->administrado_id = $request->administrado_id;
